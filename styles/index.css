@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply text-dark-blue-90;
+}
+
+.headline-1 {
+  @apply text-2xl font-medium font-plex-serif;
+}
+
+.headline-2 {
+  @apply text-xl font-medium font-plex-sans;
+}
+
+.paragraph {
+  @apply text-sm font-normal font-plex-sans;
+}
+
+.section {
+  @apply px-5 md:px-12;
+}
+
+.section-white {
+  @apply px-5 md:px-12 bg-white;
+}
+
+.btn-primary {
+  @apply bg-success py-4 px-8 text-white rounded-[45px] uppercase block my-0 mx-auto;
+}
