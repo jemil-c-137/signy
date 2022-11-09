@@ -7,15 +7,15 @@ body {
 }
 
 .headline-1 {
-  @apply text-2xl font-medium font-plex-serif;
+  @apply text-2xl font-medium font-plex-serif md:text-4xl lg:text-5xl;
 }
 
 .headline-2 {
-  @apply text-xl font-medium font-plex-sans;
+  @apply text-xl font-medium font-plex-sans md:text-2xl;
 }
 
 .paragraph {
-  @apply text-sm font-normal font-plex-sans;
+  @apply text-sm font-normal font-plex-sans md:text-base;
 }
 
 .section {
@@ -26,6 +26,23 @@ body {
   @apply px-5 md:px-12 bg-white;
 }
 
+.btn-base {
+  @apply py-4 px-8 font-bold text-xs rounded-[45px] uppercase block my-0 mx-auto md:text-base;
+}
+
+
 .btn-primary {
-  @apply bg-success py-4 px-8 text-white rounded-[45px] uppercase block my-0 mx-auto;
+  @apply btn-base bg-success text-white;
+}
+
+.btn-secondary {
+  @apply btn-base bg-transparent text-dark border-success border-2;
+}
+
+.btn-small {
+  @apply py-2 font-medium text-sm;
+}
+
+.bg-nav {
+  @apply bg-black/80
 }

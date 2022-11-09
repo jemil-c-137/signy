@@ -7,6 +7,7 @@ module.exports = {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
+        dark: '#061224',
         success: '#1064E5',
         'dark-blue-10': 'rgba(6, 18, 36, 0.1)',
         'dark-blue-20': 'rgba(6, 18, 36, 0.2)',

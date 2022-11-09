@@ -4,35 +4,35 @@ import Pig from '../assets/logos/pig.svg';
 
 export default function Features() {
   return (
-    <section className="section-white py-12">
-      <div className="flex flex-col gap-y-9">
-        <div className="flex items-center gap-x-8">
+    <section className="section-white py-12 md:py-14 lg:px-56">
+      <div className="flex flex-col justify-center  md:pl-0 gap-y-9 md:flex-row md:gap-x-5">
+        <div className="flex items-center gap-x-8 md:gap-x-4">
           <div>
             <Speedometer />
           </div>
           <div>
-            <p className="headline-2">Instantly</p>
-            <p className="paragraph">No delays. 1 second to sign</p>
+            <p className="headline-2 md:text-center">Instantly</p>
+            <p className="paragraph md:text-center">No delays. 1 second to sign</p>
           </div>
         </div>
-        <div className="flex items-center gap-x-8">
+        <div className="flex items-center gap-x-8 md:gap-x-4">
           <div>
             <ThumbsUp />
           </div>
 
           <div>
-            <p className="headline-2">Globally</p>
-            <p className="paragraph">The service is available 24/7 from all devices</p>
+            <p className="headline-2 md:text-center">Globally</p>
+            <p className="paragraph md:text-center">The service is available 24/7 from all devices</p>
           </div>
         </div>
-        <div className="flex items-center gap-x-8">
+        <div className="flex items-center gap-x-8 md:gap-x-4">
           <div>
             <Pig />
           </div>
 
           <div>
-            <p className="headline-2">Economically</p>
-            <p className="paragraph">30 times cheaper than mail and couriers</p>
+            <p className="headline-2 md:text-center">Economically</p>
+            <p className="paragraph md:text-center">30 times cheaper than mail and couriers</p>
           </div>
         </div>
       </div>
