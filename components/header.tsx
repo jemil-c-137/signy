@@ -13,6 +13,17 @@ export default function Header() {
     setShowMobileNav((state) => !state);
   };
 
+  const options = [
+    { name: '0 800 750 643', value: 'phoneNUmber' },
+    { name: 'Blog', value: 'blog' },
+    { name: 'Videos', value: 'video' },
+    { name: 'Questions', value: 'questions' },
+  ];
+
+  const handleSelect = (value: string) => {
+    console.log('selected', value);
+  };
+
   return (
     <header className="absolute w-full section py-5 flex justify-between items-center">
       <SignyLogo />
@@ -33,10 +44,10 @@ export default function Header() {
             </div>
 
             <ul className="flex flex-col justify-between items-center gap-y-16">
-              <li>0 800 750 643</li>
-              <li>About us</li>
-              <li>Prices</li>
-              <li>Contacts</li>
+              <Select options={options} selectHandler={handleSelect} />
+              <li className='uppercase font-medium' >About us</li>
+              <li className='uppercase font-medium' >Prices</li>
+              <li className='uppercase font-medium' >Contacts</li>
               <Button small type="secondary">
                 Login
               </Button>
@@ -48,7 +59,7 @@ export default function Header() {
       <nav className="hidden lg:block">
         <ul className="flex justify-between items-center flex-row gap-x-9">
           <li>
-            <Select />
+            <Select options={options} selectHandler={handleSelect} />
           </li>
           <li>About us</li>
           <li>Prices</li>

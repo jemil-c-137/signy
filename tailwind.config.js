@@ -9,6 +9,8 @@ module.exports = {
         'accent-7': '#333',
         dark: '#061224',
         success: '#1064E5',
+        'light-blue': '#E2EDFB',
+        'light-blue-100': '#EFF6FD',
         'dark-blue-10': 'rgba(6, 18, 36, 0.1)',
         'dark-blue-20': 'rgba(6, 18, 36, 0.2)',
         'dark-blue-30': 'rgba(6, 18, 36, 0.3)',
