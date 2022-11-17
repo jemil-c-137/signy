@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useOnClickOutside } from 'hooks/useClickOutside';
+import React, { useState, useRef } from 'react';
 import Arrow from '../assets/logos/arrow.svg';
 
 interface ISelectProps {
@@ -17,6 +18,10 @@ const Select: React.FC<ISelectProps> = ({ options, selectHandler }) => {
     }
   };
 
+  const ref = useRef();
+
+  useOnClickOutside(ref, () => setOpen(false));
+
   const select = (value: string) => {
     const newSelected = options.find((option) => option.value === value);
     setSelected(newSelected);
@@ -28,8 +33,10 @@ const Select: React.FC<ISelectProps> = ({ options, selectHandler }) => {
       <div
         onClick={clickHandler}
         id="standard-select"
-        className="uppercase relative text-center font-medium md:font-normal bg-transparent border-none w-full font-plex-sans text-base cursor-pointer outline-none">
-        <div className={`${open ? 'block' : 'hidden'} uppercase absolute top-0 left-0 w-full bg-light-blue-100`}>
+        className="uppercase flex justify-center items-center gap-x-2 relative text-center font-medium bg-transparent border-none w-full font-plex-sans text-base cursor-pointer outline-none">
+        <div
+          ref={ref}
+          className={`${open ? 'block' : 'hidden'} uppercase absolute top-[30px] left-0 w-full bg-light-blue-100`}>
           {options.map((option) => (
             <div onClick={() => select(option.value)} className="py-4 active:bg-white" key={option.value}>
               {option.name}

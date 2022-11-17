@@ -57,8 +57,8 @@ export default function Header() {
         </div>
       </nav>
       <nav className="hidden lg:block">
-        <ul className="flex justify-between items-center flex-row gap-x-9">
-          <li>
+        <ul className="flex justify-between items-center flex-row gap-x-9 uppercase font-medium">
+          <li className='min-w-[140px]' >
             <Select options={options} selectHandler={handleSelect} />
           </li>
           <li>About us</li>

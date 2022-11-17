@@ -19,17 +19,16 @@ body {
 }
 
 .section {
-  @apply px-5 md:px-12;
+  @apply px-5 md:px-12 lg:px-28;
 }
 
 .section-white {
-  @apply px-5 md:px-12 bg-white;
+  @apply px-5 md:px-12 lg:px-28 bg-white;
 }
 
 .btn-base {
   @apply py-4 px-8 font-bold text-xs rounded-[45px] uppercase block my-0 mx-auto md:text-base;
 }
-
 
 .btn-primary {
   @apply btn-base bg-success text-white;
@@ -44,5 +43,5 @@ body {
 }
 
 .bg-nav {
-  @apply bg-black/80
+  @apply bg-black/80;
 }
