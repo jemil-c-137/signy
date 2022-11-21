@@ -22,6 +22,7 @@ module.exports = {
         'dark-blue-90': 'rgba(6, 18, 36, 0.9)',
         'dark-blue-100': '#061224',
         cyan: '#79FFE1',
+        'light-cyan': '#D8F1F0'
       },
       spacing: {
         28: '7rem',

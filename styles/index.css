@@ -26,6 +26,10 @@ body {
   @apply px-5 md:px-12 lg:px-28 bg-white;
 }
 
+.section-cyan {
+  @apply section bg-light-cyan;
+}
+
 .btn-base {
   @apply py-4 px-8 font-bold text-xs rounded-[45px] uppercase block my-0 mx-auto md:text-base;
 }
