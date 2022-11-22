@@ -5,12 +5,15 @@ interface IButtonProps {
   small?: boolean;
   children: JSX.Element | string;
   classes?: string;
+  wide?: boolean;
 }
 
-const Button: React.FC<IButtonProps> = ({ children, type = 'primary', small, classes = '' }) => {
+const Button: React.FC<IButtonProps> = ({ children, type = 'primary', small, classes = '', wide = false }) => {
   return (
     <button
-      className={`${type === 'primary' ? 'btn-primary' : 'btn-secondary'} ${small ? 'btn-small' : ''} ${classes}`}>
+      className={`${type === 'primary' ? 'btn-primary' : 'btn-secondary'} ${small ? 'btn-small' : ''} ${
+        wide ? 'w-full' : ''
+      } ${classes}`}>
       {children}
     </button>
   );

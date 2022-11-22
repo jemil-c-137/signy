@@ -11,8 +11,8 @@ interface IBulletListProps {
 const BulletList: React.FC<IBulletListProps> = ({ title, listItems, cta, img, reverse }) => {
   return (
     <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} md:gap-x-8`}>
-      <div className="md:w-1/2">
-        <h3 className="headline-2 mb-3">{title}</h3>
+      <div className="md:w-1/2 mb-8 md:mb-0">
+        <h3 className="headline-1 mb-3">{title}</h3>
         <ul className="list-none pl-4 mb-8">
           {listItems.map(({ name, id }) => {
             return (

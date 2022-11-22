@@ -8,6 +8,7 @@ import BulletList from '@/components/bulletList';
 import Button from '@/components/button';
 import Image from 'next/image';
 import interfaceImg from '../assets/img/interface.png';
+import CardsGrid from '@/components/cardsGrid';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -17,10 +18,62 @@ const listItems = [
 ];
 
 const secondListItems = [
-  { name: "Web version without software installation", id: '1' },
-  { name: "Ability to process incoming documents for free and unlimited", id: '2' },
-  { name: "Ease of integration with 1C and other services", id: '3' },
-  { name: "Mobile ID login support", id: '4' },
+  { name: 'Web version without software installation', id: '1' },
+  { name: 'Ability to process incoming documents for free and unlimited', id: '2' },
+  { name: 'Ease of integration with 1C and other services', id: '3' },
+  { name: 'Mobile ID login support', id: '4' },
+];
+
+const cardsGridItems = [
+  {
+    title: 'Demo',
+    subtext: (
+      <>
+        <p className="mb-4">30 documents</p>
+        <p className="mb-8">
+          <span className="font-bold text-6xl">0</span>$/month
+        </p>
+      </>
+    ),
+    cta: <Button wide>Register</Button>,
+    id: '1',
+  },
+  {
+    title: 'Business',
+    subtext: (
+      <>
+        <p className="mb-4">1000 documents</p>
+        <p className="mb-8">
+          <span className="font-bold text-6xl">300</span>$/month
+        </p>
+      </>
+    ),
+    cta: <Button wide>Order</Button>,
+    id: '2',
+  },
+  {
+    title: 'Pro',
+    subtext: (
+      <>
+        <p className="mb-4">10000 documents</p>
+        <p className="mb-8">
+          <span className="font-bold text-6xl">1000</span>$/month
+        </p>
+      </>
+    ),
+    cta: <Button wide>Order</Button>,
+    id: '3',
+  },
+  {
+    title: 'Individual',
+    subtext: (
+      <>
+        <p className="mb-24">Unlimited number of documents</p>
+      </>
+    ),
+    cta: <Button wide>Contact</Button>,
+    id: '4',
+  },
 ];
 
 export default function Index({ allPosts }) {
@@ -32,12 +85,16 @@ export default function Index({ allPosts }) {
         </Head>
         <Hero />
         <Features />
-        <section className="section-cyan py-4 md:py-12 gap-y-14 flex flex-col">
+        <section className="section-cyan py-5 md:py-12 lg:py-14 gap-y-14 flex flex-col">
           <BulletList
             title="Comfort at work"
             listItems={listItems}
             img={<Image src={interfaceImg} alt="pic of interface" width={500} height={500} />}
-            cta={<Button type='secondary' classes="md:mr-auto md:ml-0">More</Button>}
+            cta={
+              <Button type="secondary" classes="md:mr-auto md:ml-0">
+                More
+              </Button>
+            }
           />
           <BulletList
             title="Our Product is"
@@ -46,6 +103,9 @@ export default function Index({ allPosts }) {
             img={<Image src={interfaceImg} alt="picture of interface" width={500} height={500} />}
             cta={<Button classes="md:mr-auto md:ml-0">Register</Button>}
           />
+        </section>
+        <section className="section-white py-5 md:py-8">
+          <CardsGrid title="Digital signature packages" cards={cardsGridItems} />
         </section>
       </Layout>
     </>
