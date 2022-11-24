@@ -9,6 +9,10 @@ import Button from '@/components/button';
 import Image from 'next/image';
 import interfaceImg from '../assets/img/interface.png';
 import CardsGrid from '@/components/cardsGrid';
+import novaPoshta from '../assets/img/poshta.png';
+import oboronProm from '../assets/img/obrprom.png';
+import nix from '../assets/img/nix.png';
+import hlib from '../assets/img/hlib.png';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -106,6 +110,25 @@ export default function Index({ allPosts }) {
         </section>
         <section className="section-white py-5 md:py-8">
           <CardsGrid title="Digital signature packages" cards={cardsGridItems} />
+        </section>
+        <section className="section-cyan py-10">
+          <h3 className="text-4xl md:text-[56px] lg:text-7xl leading-[48px] lg:mb-4 font-medium text-center mb-2">
+            5 820 125 114{' '}
+          </h3>
+          <p className="headline-2 text-center mb-4">signed documents</p>
+          <p className="paragraph">
+            Our company has been creating convenient solutions for businesses of any size for over 30 years. We are
+            proud of Signy as a safe and comfortable product.
+          </p>
+        </section>
+        <section className="section-white py-5">
+          <h3 className="headline-2 mb-6 text-center">Friends of Signy</h3>
+          <div className="grid grid-cols-2 items-center justify-center gap-12">
+            <Image width={100} height={100} src={oboronProm} alt="oboron prom image" />
+            <Image width={100} height={100} src={novaPoshta} alt="oboron prom image" />
+            <Image width={100} height={100} src={nix} alt="oboron prom image" />
+            <Image width={100} height={100} src={hlib} alt="oboron prom image" />
+          </div>
         </section>
       </Layout>
     </>
