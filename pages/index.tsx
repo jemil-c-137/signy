@@ -123,11 +123,11 @@ export default function Index({ allPosts }) {
         </section>
         <section className="section-white py-5">
           <h3 className="headline-2 mb-6 text-center">Friends of Signy</h3>
-          <div className="grid grid-cols-2 items-center justify-center gap-12">
-            <Image width={100} height={100} src={oboronProm} alt="oboron prom image" />
-            <Image width={100} height={100} src={novaPoshta} alt="oboron prom image" />
-            <Image width={100} height={100} src={nix} alt="oboron prom image" />
-            <Image width={100} height={100} src={hlib} alt="oboron prom image" />
+          <div className="grid grid-cols-2 md:grid-cols-4 items-center justify-items-center gap-12">
+            <Image width={200} height={200} src={oboronProm} alt="oboron prom image" />
+            <Image width={200} height={200} src={novaPoshta} alt="oboron prom image" />
+            <Image width={200} height={200} src={nix} alt="oboron prom image" />
+            <Image width={200} height={200} src={hlib} alt="oboron prom image" />
           </div>
         </section>
       </Layout>
