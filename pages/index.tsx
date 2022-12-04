@@ -13,6 +13,7 @@ import novaPoshta from '../assets/img/poshta.png';
 import oboronProm from '../assets/img/obrprom.png';
 import nix from '../assets/img/nix.png';
 import hlib from '../assets/img/hlib.png';
+import computer from '../assets/img/computer.png';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -128,6 +129,21 @@ export default function Index({ allPosts }) {
             <Image width={200} height={200} src={novaPoshta} alt="oboron prom image" />
             <Image width={200} height={200} src={nix} alt="oboron prom image" />
             <Image width={200} height={200} src={hlib} alt="oboron prom image" />
+          </div>
+        </section>
+        <section className="section-cyan py-5 md:py-8 lg:py-10">
+          <h3 className="headline-2 text-center mb-6">Interestingly writing about</h3>
+          <div className='flex flex-col gap-y-4 md:flex-row md:gap-x-11 items-center justify-center' >
+            <div>
+              <Image width={374} height={395} src={computer} alt="computer image" className='mb-3' />
+              <p className='text-xs mb-1.5 md:text-sm' >28.05.2020</p>
+              <p className='text-base md:text-lg lg:text-xl font-semibold' >Short title</p>
+            </div>
+            <div>
+              <Image width={374} height={395} src={computer} alt="computer image" className='mb-3' />
+              <p className='text-xs mb-1.5 md:text-sm' >28.05.2020</p>
+              <p className='text-base md:text-lg lg:text-xl font-semibold' >Short title</p>
+            </div>
           </div>
         </section>
       </Layout>
