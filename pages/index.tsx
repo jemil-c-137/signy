@@ -14,6 +14,8 @@ import oboronProm from '../assets/img/obrprom.png';
 import nix from '../assets/img/nix.png';
 import hlib from '../assets/img/hlib.png';
 import computer from '../assets/img/computer.png';
+import bigComputer from '../assets/img/big-computer.png';
+import Accordion from '@/components/accordion';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -81,6 +83,31 @@ const cardsGridItems = [
   },
 ];
 
+const accordionData = [
+  {
+    title: 'Section 1',
+    content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente
+    laborum cupiditate possimus labore, hic temporibus velit dicta earum
+    suscipit commodi eum enim atque at? Et perspiciatis dolore iure
+    voluptatem.`,
+  },
+  {
+    title: 'Section 2',
+    content: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia veniam
+    reprehenderit nam assumenda voluptatem ut. Ipsum eius dicta, officiis
+    quaerat iure quos dolorum accusantium ducimus in illum vero commodi
+    pariatur? Impedit autem esse nostrum quasi, fugiat a aut error cumque
+    quidem maiores doloremque est numquam praesentium eos voluptatem amet!
+    Repudiandae, mollitia id reprehenderit a ab odit!`,
+  },
+  {
+    title: 'Section 3',
+    content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+    quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+    dolor ut sequi minus iste? Quas?`,
+  },
+];
+
 export default function Index({ allPosts }) {
   return (
     <>
@@ -133,17 +160,27 @@ export default function Index({ allPosts }) {
         </section>
         <section className="section-cyan py-5 md:py-8 lg:py-10">
           <h3 className="headline-2 text-center mb-6">Interestingly writing about</h3>
-          <div className='flex flex-col gap-y-4 md:flex-row md:gap-x-11 items-center justify-center' >
+          <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-11 items-center justify-center">
             <div>
-              <Image width={374} height={395} src={computer} alt="computer image" className='mb-3' />
-              <p className='text-xs mb-1.5 md:text-sm' >28.05.2020</p>
-              <p className='text-base md:text-lg lg:text-xl font-semibold' >Short title</p>
+              <Image width={374} height={395} src={computer} alt="computer image" className="mb-3" />
+              <p className="text-xs mb-1.5 md:text-sm">28.05.2020</p>
+              <p className="text-base md:text-lg lg:text-xl font-semibold">Short title</p>
             </div>
             <div>
-              <Image width={374} height={395} src={computer} alt="computer image" className='mb-3' />
-              <p className='text-xs mb-1.5 md:text-sm' >28.05.2020</p>
-              <p className='text-base md:text-lg lg:text-xl font-semibold' >Short title</p>
+              <Image width={374} height={395} src={computer} alt="computer image" className="mb-3" />
+              <p className="text-xs mb-1.5 md:text-sm">28.05.2020</p>
+              <p className="text-base md:text-lg lg:text-xl font-semibold">Short title</p>
             </div>
+          </div>
+        </section>
+        <section className="section-white py-5 flex flex-col justify-center items-center">
+          <h3 className="headline-2 mb-6">Let's meet live?</h3>
+          <Image width={734} height={451} src={bigComputer} alt="computer image"></Image>
+        </section>
+        <section className="section-cyan">
+          <h3 className="headline-2 text-center">FAQ</h3>
+          <div className='max-w-[511px] lg:max-w-[550xp] mx-auto my-0' >
+            <Accordion list={accordionData} />
           </div>
         </section>
       </Layout>
