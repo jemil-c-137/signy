@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 interface IButtonProps {
-  type?: 'primary' | 'secondary';
+  style?: 'primary' | 'secondary';
   small?: boolean;
   children: JSX.Element | string;
   classes?: string;
   wide?: boolean;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 
-const Button: React.FC<IButtonProps> = ({ children, type = 'primary', small, classes = '', wide = false }) => {
+const Button: React.FC<IButtonProps> = ({
+  children,
+  style = 'primary',
+  small,
+  classes = '',
+  wide = false,
+  type = 'button',
+}) => {
   return (
     <button
-      className={`${type === 'primary' ? 'btn-primary' : 'btn-secondary'} ${small ? 'btn-small' : ''} ${
+      type={type}
+      className={`${style === 'primary' ? 'btn-primary' : 'btn-secondary'} ${small ? 'btn-small' : ''} ${
         wide ? 'w-full' : ''
       } ${classes}`}>
       {children}

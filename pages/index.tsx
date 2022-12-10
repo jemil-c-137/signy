@@ -16,6 +16,7 @@ import hlib from '../assets/img/hlib.png';
 import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
+import SubscribeForm from '@/components/subscribeForm';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -85,14 +86,14 @@ const cardsGridItems = [
 
 const accordionData = [
   {
-    title: 'Section 1',
+    title: 'Why is a round pizza put in a square box, but cut into triangles?',
     content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente
     laborum cupiditate possimus labore, hic temporibus velit dicta earum
     suscipit commodi eum enim atque at? Et perspiciatis dolore iure
     voluptatem.`,
   },
   {
-    title: 'Section 2',
+    title: 'Why is the water wet?',
     content: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia veniam
     reprehenderit nam assumenda voluptatem ut. Ipsum eius dicta, officiis
     quaerat iure quos dolorum accusantium ducimus in illum vero commodi
@@ -101,7 +102,19 @@ const accordionData = [
     Repudiandae, mollitia id reprehenderit a ab odit!`,
   },
   {
-    title: 'Section 3',
+    title: 'Can microbes see each other?',
+    content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+    quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+    dolor ut sequi minus iste? Quas?`,
+  },
+  {
+    title: 'Why is blood red and veins blue?',
+    content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+    quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+    dolor ut sequi minus iste? Quas?`,
+  },
+  {
+    title: 'What is a rainbow made of?',
     content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
     quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
     dolor ut sequi minus iste? Quas?`,
@@ -123,7 +136,7 @@ export default function Index({ allPosts }) {
             listItems={listItems}
             img={<Image src={interfaceImg} alt="pic of interface" width={500} height={500} />}
             cta={
-              <Button type="secondary" classes="md:mr-auto md:ml-0">
+              <Button style="secondary" classes="md:mr-auto md:ml-0">
                 More
               </Button>
             }
@@ -177,11 +190,14 @@ export default function Index({ allPosts }) {
           <h3 className="headline-2 mb-6">Let's meet live?</h3>
           <Image width={734} height={451} src={bigComputer} alt="computer image"></Image>
         </section>
-        <section className="section-cyan">
+        <section className="section-cyan py-8 md:py-10 lg:py-12">
           <h3 className="headline-2 text-center">FAQ</h3>
           <div className='max-w-[511px] lg:max-w-[550xp] mx-auto my-0' >
             <Accordion list={accordionData} />
           </div>
+        </section>
+        <section className='section-white py-12'>
+          <SubscribeForm />
         </section>
       </Layout>
     </>
