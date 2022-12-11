@@ -48,7 +48,7 @@ export default function Header() {
               <li className='uppercase font-medium' >About us</li>
               <li className='uppercase font-medium' >Prices</li>
               <li className='uppercase font-medium' >Contacts</li>
-              <Button small type="secondary">
+              <Button small style="secondary">
                 Login
               </Button>
               <Button small>Registration</Button>
@@ -64,7 +64,7 @@ export default function Header() {
           <li>About us</li>
           <li>Prices</li>
           <li>Contacts</li>
-          <Button small type="secondary">
+          <Button small style="secondary">
             Login
           </Button>
           <Button small>Registration</Button>

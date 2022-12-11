@@ -49,3 +49,8 @@ body {
 .bg-nav {
   @apply bg-black/80;
 }
+
+.footer {
+  display: grid;
+  grid: "a" "b" / "c" "d"
+}
