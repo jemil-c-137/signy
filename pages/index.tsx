@@ -122,6 +122,8 @@ const accordionData = [
 ];
 
 export default function Index({ allPosts }) {
+  console.log('all posts', allPosts);
+
   return (
     <>
       <Layout>
@@ -156,14 +158,14 @@ export default function Index({ allPosts }) {
           <h3 className="text-4xl md:text-[56px] lg:text-7xl leading-[48px] lg:mb-4 font-medium text-center mb-2">
             5 820 125 114{' '}
           </h3>
-          <p className="headline-2 text-center mb-4">signed documents</p>
+          <p className="headline-1 text-center mb-4">signed documents</p>
           <p className="paragraph">
             Our company has been creating convenient solutions for businesses of any size for over 30 years. We are
             proud of Signy as a safe and comfortable product.
           </p>
         </section>
         <section className="section-white py-5">
-          <h3 className="headline-2 mb-6 text-center">Friends of Signy</h3>
+          <h3 className="headline-1 mb-6 text-center">Friends of Signy</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 items-center justify-items-center gap-12">
             <Image width={200} height={200} src={oboronProm} alt="oboron prom image" />
             <Image width={200} height={200} src={novaPoshta} alt="oboron prom image" />
@@ -172,7 +174,7 @@ export default function Index({ allPosts }) {
           </div>
         </section>
         <section className="section-cyan py-5 md:py-8 lg:py-10">
-          <h3 className="headline-2 text-center mb-6">Interestingly writing about</h3>
+          <h3 className="headline-1 text-center mb-6">Interestingly writing about</h3>
           <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-11 items-center justify-center">
             <div>
               <Image width={374} height={395} src={computer} alt="computer image" className="mb-3" />
@@ -187,16 +189,16 @@ export default function Index({ allPosts }) {
           </div>
         </section>
         <section className="section-white py-5 flex flex-col justify-center items-center">
-          <h3 className="headline-2 mb-6">Let's meet live?</h3>
+          <h3 className="headline-1 mb-6">Let's meet live?</h3>
           <Image width={734} height={451} src={bigComputer} alt="computer image"></Image>
         </section>
         <section className="section-cyan py-8 md:py-10 lg:py-12">
-          <h3 className="headline-2 text-center">FAQ</h3>
-          <div className='max-w-[511px] lg:max-w-[550xp] mx-auto my-0' >
+          <h3 className="headline-1 text-center mb-4">FAQ</h3>
+          <div className="max-w-[511px] lg:max-w-[550xp] mx-auto my-0">
             <Accordion list={accordionData} />
           </div>
         </section>
-        <section className='section-white py-12'>
+        <section className="section-white py-12">
           <SubscribeForm />
         </section>
       </Layout>
