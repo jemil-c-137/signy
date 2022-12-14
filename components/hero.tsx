@@ -1,26 +1,10 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-export default function Hero() {
-  const slides = [
-    {
-      headline: 'Quick registration',
-      heroText:
-        "We've created perhaps the easiest registration ever. Sign up, get full access to the service, and get 1,000 document signatures as a gift!",
-      id: '1',
-    },
-    {
-      headline: 'Download document',
-      heroText: 'Load into the system any document to be signed, a contract, an act of work performed, anything',
-      id: '2',
-    },
-    {
-      headline: 'Sign and send',
-      heroText:
-        "Sign with your digital signature and send it to your partner or company in a split second. He signs back and that's it! Done!",
-      id: '3',
-    },
-  ];
+interface IHeroProps {
+  slides: { id: string; text: string; title: string }[];
+}
+const Hero: React.FC<IHeroProps> = ({ slides }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const renderSlide = (text: string, index: number, id: string) => (
@@ -56,8 +40,8 @@ export default function Hero() {
               );
           })}
         </div>
-        <p className="headline-2 mb-2">{slides[activeSlide].headline}</p>
-        <p className="paragraph max-w-[65%] mb-9">{slides[activeSlide].heroText}</p>
+        <p className="headline-2 mb-2">{slides[activeSlide].title}</p>
+        <p className="paragraph max-w-[65%] mb-9">{slides[activeSlide].text}</p>
         <button className="btn-primary lg:ml-0 lg:mr-auto">Try for free</button>
         <div className="flex justify-center items-center gap-x-6 mt-8">
           {slides.map(({ id }, index) => (
@@ -72,4 +56,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getAllPostsForHome } from '@/lib/api';
+import { getAllPostsForHome, getHeroSlides } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -121,8 +121,8 @@ const accordionData = [
   },
 ];
 
-export default function Index({ allPosts }) {
-  console.log('all posts', allPosts);
+export default function Index({ allPosts, slides }: { allPosts: any; slides: HeroSliderResponse }) {
+  console.log('all posts', slides);
 
   return (
     <>
@@ -130,7 +130,7 @@ export default function Index({ allPosts }) {
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Hero />
+        <Hero slides={slides.heroSlider.heroSlide} />
         <Features />
         <section className="section-cyan py-5 md:py-12 lg:py-14 gap-y-14 flex flex-col">
           <BulletList
@@ -206,9 +206,17 @@ export default function Index({ allPosts }) {
   );
 }
 
+interface HeroSliderResponse {
+  heroSlider: {
+    heroSlide: { id: string; text: string; title: string }[];
+  };
+}
+
 export async function getStaticProps({ preview = false }) {
   const allPosts = (await getAllPostsForHome(preview)) || [];
+  const slides: HeroSliderResponse = await getHeroSlides();
+  console.log('slides', slides);
   return {
-    props: { allPosts },
+    props: { allPosts, slides },
   };
 }
