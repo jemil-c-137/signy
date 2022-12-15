@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getAllPostsForHome, getHeroSlides } from '@/lib/api';
+import { getHeroSlides } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -17,6 +17,7 @@ import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
+import { HeroSliderResponse } from '@/lib/types';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -121,7 +122,7 @@ const accordionData = [
   },
 ];
 
-export default function Index({ allPosts, slides }: { allPosts: any; slides: HeroSliderResponse }) {
+export default function Index({ slides }: { allPosts: any; slides: HeroSliderResponse }) {
   console.log('all posts', slides);
 
   return (
@@ -206,17 +207,9 @@ export default function Index({ allPosts, slides }: { allPosts: any; slides: Her
   );
 }
 
-interface HeroSliderResponse {
-  heroSlider: {
-    heroSlide: { id: string; text: string; title: string }[];
-  };
-}
-
-export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getAllPostsForHome(preview)) || [];
+export async function getStaticProps() {
   const slides: HeroSliderResponse = await getHeroSlides();
-  console.log('slides', slides);
   return {
-    props: { allPosts, slides },
+    props: { slides },
   };
 }
