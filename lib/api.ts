@@ -1,3 +1,5 @@
+import { AllFeatures, HeroSliderResponse } from './types';
+
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
 
@@ -18,7 +20,10 @@ const responsiveImageFragment = `
   }
 `;
 
-async function fetchAPI(query, { variables, preview = false }: { variables?: unknown; preview?: boolean } = {}) {
+async function fetchAPI<T>(
+  query,
+  { variables, preview = false }: { variables?: unknown; preview?: boolean } = {},
+): Promise<T> {
   const res = await fetch(API_URL + (preview ? '/preview' : ''), {
     method: 'POST',
     headers: {
@@ -40,7 +45,7 @@ async function fetchAPI(query, { variables, preview = false }: { variables?: unk
 }
 
 export async function getPreviewPostBySlug(slug) {
-  const data = await fetchAPI(
+  const data = await fetchAPI<any>(
     `
     query PostBySlug($slug: String) {
       post(filter: {slug: {eq: $slug}}) {
@@ -58,7 +63,7 @@ export async function getPreviewPostBySlug(slug) {
 }
 
 export async function getHeroSlides() {
-  const data = await fetchAPI(
+  const data = await fetchAPI<HeroSliderResponse>(
     `
     query MyQuery {
       heroSlider {
@@ -69,6 +74,24 @@ export async function getHeroSlides() {
         }
       }
     }
+    `,
+  );
+  return data;
+}
+
+export async function getAllFeatures() {
+  const data = await fetchAPI<AllFeatures>(
+    `
+    query MyQuery {
+      allFeatures {
+        id
+        text
+        title
+        logo {
+          url
+        }
+      }
+    }    
     `,
   );
   return data;

@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getHeroSlides } from '@/lib/api';
+import { getAllFeatures, getHeroSlides } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -17,7 +17,7 @@ import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { HeroSliderResponse } from '@/lib/types';
+import { AllFeatures, HeroSliderResponse } from '@/lib/types';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -122,8 +122,13 @@ const accordionData = [
   },
 ];
 
-export default function Index({ slides }: { allPosts: any; slides: HeroSliderResponse }) {
-  console.log('all posts', slides);
+interface IndexProps {
+  features: AllFeatures;
+  slides: HeroSliderResponse;
+}
+
+export default function Index({ slides, features }: IndexProps) {
+  console.log('features', features);
 
   return (
     <>
@@ -132,7 +137,7 @@ export default function Index({ slides }: { allPosts: any; slides: HeroSliderRes
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
         <Hero slides={slides.heroSlider.heroSlide} />
-        <Features />
+        <Features features={features} />
         <section className="section-cyan py-5 md:py-12 lg:py-14 gap-y-14 flex flex-col">
           <BulletList
             title="Comfort at work"
@@ -207,9 +212,13 @@ export default function Index({ slides }: { allPosts: any; slides: HeroSliderRes
   );
 }
 
-export async function getStaticProps() {
-  const slides: HeroSliderResponse = await getHeroSlides();
+export async function getStaticProps(): Promise<{ props: IndexProps }> {
+  const slides = await getHeroSlides();
+  const features = await getAllFeatures();
+
+  console.log('feature', features);
+
   return {
-    props: { slides },
+    props: { slides, features },
   };
 }
