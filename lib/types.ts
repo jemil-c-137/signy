@@ -9,5 +9,8 @@ export interface AllFeatures {
     id: string;
     text: string;
     title: string;
+    logo: {
+      url: string
+    }
   }[];
 }
