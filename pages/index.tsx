@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getAllFeatures, getHeroSlides } from '@/lib/api';
+import { getAllBulletLists, getAllFeatures, getHeroSlides } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -17,7 +17,7 @@ import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { AllFeatures, HeroSliderResponse } from '@/lib/types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse } from '@/lib/types';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -125,10 +125,13 @@ const accordionData = [
 interface IndexProps {
   features: AllFeatures;
   slides: HeroSliderResponse;
+  allBulletLists: AllBulletLists;
 }
 
-export default function Index({ slides, features }: IndexProps) {
-  console.log('features', features);
+export default function Index({ slides, features, allBulletLists }: IndexProps) {
+  console.log('allBulletLists', allBulletLists);
+
+  const [FirstList, SecondList] = allBulletLists.allBulletLists;
 
   return (
     <>
@@ -140,9 +143,9 @@ export default function Index({ slides, features }: IndexProps) {
         <Features features={features} />
         <section className="section-cyan py-5 md:py-12 lg:py-14 gap-y-14 flex flex-col">
           <BulletList
-            title="Comfort at work"
-            listItems={listItems}
-            img={<Image src={interfaceImg} alt="pic of interface" width={500} height={500} />}
+            title={FirstList.title}
+            listItems={FirstList.text}
+            img={<Image src={FirstList.image.url} alt="pic of interface" width={500} height={500} />}
             cta={
               <Button style="secondary" classes="md:mr-auto md:ml-0">
                 More
@@ -150,10 +153,10 @@ export default function Index({ slides, features }: IndexProps) {
             }
           />
           <BulletList
-            title="Our Product is"
+            title={SecondList.title}
             reverse
-            listItems={secondListItems}
-            img={<Image src={interfaceImg} alt="picture of interface" width={500} height={500} />}
+            listItems={SecondList.text}
+            img={<Image src={SecondList.image.url} alt="picture of interface" width={500} height={500} />}
             cta={<Button classes="md:mr-auto md:ml-0">Register</Button>}
           />
         </section>
@@ -215,10 +218,11 @@ export default function Index({ slides, features }: IndexProps) {
 export async function getStaticProps(): Promise<{ props: IndexProps }> {
   const slides = await getHeroSlides();
   const features = await getAllFeatures();
+  const allBulletLists = await getAllBulletLists();
 
   console.log('feature', features);
 
   return {
-    props: { slides, features },
+    props: { slides, features, allBulletLists },
   };
 }

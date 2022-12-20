@@ -10,7 +10,18 @@ export interface AllFeatures {
     text: string;
     title: string;
     logo: {
+      url: string;
+    };
+  }[];
+}
+
+export interface AllBulletLists {
+  allBulletLists: {
+    text: [{ text: string; id: string }];
+    title: string;
+    id: string;
+    image: {
       url: string
     }
-  }[];
+  }[]
 }

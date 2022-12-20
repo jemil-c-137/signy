@@ -1,4 +1,4 @@
-import { AllFeatures, HeroSliderResponse } from './types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse } from './types';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -93,6 +93,25 @@ export async function getAllFeatures() {
       }
     }    
     `,
+  );
+  return data;
+}
+
+export async function getAllBulletLists() {
+  const data = await fetchAPI<AllBulletLists>(
+    `query MyQuery {
+      allBulletLists {
+        text {
+          text
+          id
+        }
+        title
+        id
+        image {
+          url
+        }
+      }
+    }`,
   );
   return data;
 }
