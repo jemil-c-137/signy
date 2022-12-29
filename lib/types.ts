@@ -21,7 +21,15 @@ export interface AllBulletLists {
     title: string;
     id: string;
     image: {
-      url: string
-    }
-  }[]
+      url: string;
+    };
+  }[];
+}
+
+export interface StandOut {
+  standOut: {
+    mainText: string;
+    subText: string;
+    bottomText: string;
+  };
 }

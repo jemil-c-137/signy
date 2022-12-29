@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getAllBulletLists, getAllFeatures, getHeroSlides } from '@/lib/api';
+import { getAllBulletLists, getAllFeatures, getHeroSlides, getStandOut } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -17,7 +17,7 @@ import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { AllBulletLists, AllFeatures, HeroSliderResponse } from '@/lib/types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse, StandOut } from '@/lib/types';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -126,9 +126,10 @@ interface IndexProps {
   features: AllFeatures;
   slides: HeroSliderResponse;
   allBulletLists: AllBulletLists;
+  standOut: StandOut;
 }
 
-export default function Index({ slides, features, allBulletLists }: IndexProps) {
+export default function Index({ slides, features, allBulletLists, standOut }: IndexProps) {
   console.log('allBulletLists', allBulletLists);
 
   const [FirstList, SecondList] = allBulletLists.allBulletLists;
@@ -165,13 +166,10 @@ export default function Index({ slides, features, allBulletLists }: IndexProps) 
         </section>
         <section className="section-cyan py-10">
           <h3 className="text-4xl md:text-[56px] lg:text-7xl leading-[48px] lg:mb-4 font-medium text-center mb-2">
-            5 820 125 114{' '}
+            {standOut.standOut.mainText}
           </h3>
-          <p className="headline-1 text-center mb-4">signed documents</p>
-          <p className="paragraph">
-            Our company has been creating convenient solutions for businesses of any size for over 30 years. We are
-            proud of Signy as a safe and comfortable product.
-          </p>
+          <p className="headline-1 text-center mb-4">{standOut.standOut.subText}</p>
+          <p className="paragraph text-center">{standOut.standOut.bottomText}</p>
         </section>
         <section className="section-white py-5">
           <h3 className="headline-1 mb-6 text-center">Friends of Signy</h3>
@@ -219,10 +217,11 @@ export async function getStaticProps(): Promise<{ props: IndexProps }> {
   const slides = await getHeroSlides();
   const features = await getAllFeatures();
   const allBulletLists = await getAllBulletLists();
+  const standOut = await getStandOut();
 
   console.log('feature', features);
 
   return {
-    props: { slides, features, allBulletLists },
+    props: { slides, features, allBulletLists, standOut },
   };
 }

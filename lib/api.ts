@@ -1,4 +1,4 @@
-import { AllBulletLists, AllFeatures, HeroSliderResponse } from './types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse, StandOut } from './types';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -112,6 +112,20 @@ export async function getAllBulletLists() {
         }
       }
     }`,
+  );
+  return data;
+}
+
+export async function getStandOut() {
+  const data = await fetchAPI<StandOut>(
+    `query MyQuery {
+      standOut {
+        bottomText
+        mainText
+        subText
+      }
+    }
+    `,
   );
   return data;
 }
