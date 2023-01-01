@@ -1,4 +1,4 @@
-import { AllBulletLists, AllFeatures, HeroSliderResponse, StandOut } from './types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse, Partners, StandOut } from './types';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -126,6 +126,22 @@ export async function getStandOut() {
       }
     }
     `,
+  );
+  return data;
+}
+
+export async function getPartners() {
+  const data = await fetchAPI<Partners>(
+    `
+    query MyQuery {
+      partnersModel {
+        title
+        partnerLogo {
+          url
+          id
+        }
+      }
+    }`,
   );
   return data;
 }

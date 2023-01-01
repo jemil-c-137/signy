@@ -33,3 +33,10 @@ export interface StandOut {
     bottomText: string;
   };
 }
+
+export interface Partners {
+  partnersModel: {
+    title: string;
+    partnerLogo: [{ url: string; id: string }];
+  };
+}

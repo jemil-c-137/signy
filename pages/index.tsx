@@ -1,5 +1,5 @@
 import Layout from '@/components/layout';
-import { getAllBulletLists, getAllFeatures, getHeroSlides, getStandOut } from '@/lib/api';
+import { getAllBulletLists, getAllFeatures, getHeroSlides, getPartners, getStandOut } from '@/lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
@@ -7,17 +7,12 @@ import Features from '@/components/features';
 import BulletList from '@/components/bulletList';
 import Button from '@/components/button';
 import Image from 'next/image';
-import interfaceImg from '../assets/img/interface.png';
 import CardsGrid from '@/components/cardsGrid';
-import novaPoshta from '../assets/img/poshta.png';
-import oboronProm from '../assets/img/obrprom.png';
-import nix from '../assets/img/nix.png';
-import hlib from '../assets/img/hlib.png';
 import computer from '../assets/img/computer.png';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { AllBulletLists, AllFeatures, HeroSliderResponse, StandOut } from '@/lib/types';
+import { AllBulletLists, AllFeatures, HeroSliderResponse, Partners, StandOut } from '@/lib/types';
 
 const listItems = [
   { name: "Create documents according to your personal habitual templates. It's individual!", id: '1' },
@@ -127,9 +122,10 @@ interface IndexProps {
   slides: HeroSliderResponse;
   allBulletLists: AllBulletLists;
   standOut: StandOut;
+  partners: Partners;
 }
 
-export default function Index({ slides, features, allBulletLists, standOut }: IndexProps) {
+export default function Index({ slides, features, allBulletLists, standOut, partners }: IndexProps) {
   console.log('allBulletLists', allBulletLists);
 
   const [FirstList, SecondList] = allBulletLists.allBulletLists;
@@ -172,12 +168,12 @@ export default function Index({ slides, features, allBulletLists, standOut }: In
           <p className="paragraph text-center">{standOut.standOut.bottomText}</p>
         </section>
         <section className="section-white py-5">
-          <h3 className="headline-1 mb-6 text-center">Friends of Signy</h3>
+          <h3 className="headline-1 mb-6 text-center">{partners.partnersModel.title}</h3>
+
           <div className="grid grid-cols-2 md:grid-cols-4 items-center justify-items-center gap-12">
-            <Image width={200} height={200} src={oboronProm} alt="oboron prom image" />
-            <Image width={200} height={200} src={novaPoshta} alt="oboron prom image" />
-            <Image width={200} height={200} src={nix} alt="oboron prom image" />
-            <Image width={200} height={200} src={hlib} alt="oboron prom image" />
+            {partners.partnersModel.partnerLogo.map((logo) => (
+              <Image width={200} height={200} src={logo.url} key={logo.id} alt="oboron prom image" />
+            ))}
           </div>
         </section>
         <section className="section-cyan py-5 md:py-8 lg:py-10">
@@ -218,10 +214,11 @@ export async function getStaticProps(): Promise<{ props: IndexProps }> {
   const features = await getAllFeatures();
   const allBulletLists = await getAllBulletLists();
   const standOut = await getStandOut();
+  const partners = await getPartners();
 
   console.log('feature', features);
 
   return {
-    props: { slides, features, allBulletLists, standOut },
+    props: { slides, features, allBulletLists, standOut, partners },
   };
 }
