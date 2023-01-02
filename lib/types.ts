@@ -40,3 +40,49 @@ export interface Partners {
     partnerLogo: [{ url: string; id: string }];
   };
 }
+
+export interface CardsGridResponse {
+  cardsGrid: CardsGrid;
+}
+
+export interface CardsGrid {
+  title: string;
+  card: Card[];
+}
+
+export interface Card {
+  price: string;
+  id: string;
+  title: string;
+  description: string;
+  buttonText: string;
+}
+
+export interface PostsListResponse {
+  allPosts: AllPost[];
+}
+
+export interface AllPost {
+  title: string;
+  id: string;
+  createdAt: string;
+  coverImage: CoverImage;
+}
+
+export interface CoverImage {
+  url: string;
+}
+
+export interface FAQResponse {
+  faq: FAQ
+}
+
+export interface FAQ {
+  item: Item[];
+}
+
+export interface Item {
+  question: string;
+  id:       string;
+  answer:   string;
+}

@@ -1,4 +1,14 @@
-import { AllBulletLists, AllFeatures, HeroSliderResponse, Partners, StandOut } from './types';
+import {
+  AllBulletLists,
+  AllFeatures,
+  CardsGridResponse,
+  FAQ,
+  FAQResponse,
+  HeroSliderResponse,
+  Partners,
+  PostsListResponse,
+  StandOut,
+} from './types';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -143,5 +153,57 @@ export async function getPartners() {
       }
     }`,
   );
+  return data;
+}
+
+export async function getCardsGrid() {
+  const data = await fetchAPI<CardsGridResponse>(
+    `
+    query MyQuery {
+      cardsGrid {
+        title
+        card {
+          price
+          id
+          title
+          description
+          buttonText
+        }
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getFeaturedPostsList() {
+  const data = await fetchAPI<PostsListResponse>(
+    `
+    query MyQuery {
+      allPosts(filter: {featured: {eq: true}}) {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+      }
+    }`,
+  );
+  return data;
+}
+
+export async function getFaq() {
+  const data = await fetchAPI<FAQResponse>(`
+  query MyQuery {
+    faq {
+      item {
+        question
+        id
+        answer
+      }
+    }
+  }
+  `);
   return data;
 }
