@@ -1,44 +1,36 @@
 export interface HeroSliderResponse {
-  heroSlider: {
-    heroSlide: { id: string; text: string; title: string }[];
-  };
+  heroSlide: { id: string; text: string; title: string }[];
 }
 
-export interface AllFeatures {
-  allFeatures: {
-    id: string;
-    text: string;
-    title: string;
-    logo: {
-      url: string;
-    };
-  }[];
+export interface Feature {
+  id: string;
+  text: string;
+  title: string;
+  logo: {
+    url: string;
+    width: number;
+    height: number;
+  };
 }
 
 export interface AllBulletLists {
-  allBulletLists: {
-    text: [{ text: string; id: string }];
-    title: string;
-    id: string;
-    image: {
-      url: string;
-    };
-  }[];
+  text: [{ text: string; id: string }];
+  title: string;
+  id: string;
+  image: {
+    url: string;
+  };
 }
 
 export interface StandOut {
-  standOut: {
-    mainText: string;
-    subText: string;
-    bottomText: string;
-  };
+  mainText: string;
+  subText: string;
+  bottomText: string;
 }
 
 export interface Partners {
-  partnersModel: {
-    title: string;
-    partnerLogo: [{ url: string; id: string }];
-  };
+  title: string;
+  partnerLogo: [{ url: string; id: string }];
 }
 
 export interface CardsGridResponse {
@@ -58,10 +50,6 @@ export interface Card {
   buttonText: string;
 }
 
-export interface PostsListResponse {
-  allPosts: AllPost[];
-}
-
 export interface AllPost {
   title: string;
   id: string;
@@ -74,7 +62,7 @@ export interface CoverImage {
 }
 
 export interface FAQResponse {
-  faq: FAQ
+  faq: FAQ;
 }
 
 export interface FAQ {
@@ -83,6 +71,17 @@ export interface FAQ {
 
 export interface Item {
   question: string;
-  id:       string;
-  answer:   string;
+  id: string;
+  answer: string;
+}
+
+export interface MainPageData {
+  allFeatures: Feature[];
+  heroSlider: HeroSliderResponse;
+  allBulletLists: AllBulletLists[];
+  standOut: StandOut;
+  partnersModel: Partners;
+  cardsGrid: CardsGrid;
+  allPosts: AllPost[];
+  faq: FAQ;
 }

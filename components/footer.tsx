@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="py-6 md:py-12 lg:py-16 bg-dark text-white grid grid-cols-2 md:grid-cols-[repeat(4,_minmax(0,_auto))]">
+    <div className="section py-6 md:py-12 lg:py-16 bg-dark text-white grid grid-cols-2 md:grid-cols-[repeat(4,_minmax(0,_auto))]">
       <div className="p-4 col-span-1 order-1 md:col-start-1 md:col-end-1">
         <SignyLogo fill="white" />
       </div>
