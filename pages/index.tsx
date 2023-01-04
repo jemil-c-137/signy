@@ -1,7 +1,6 @@
 import Layout from '@/components/layout';
 import { getMainPageData } from '@/lib/api';
 import Head from 'next/head';
-import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
 import Features from '@/components/features';
 import BulletList from '@/components/bulletList';
@@ -11,7 +10,7 @@ import CardsGrid from '@/components/cardsGrid';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { MainPageData } from '@/lib/types';
+import { MainPageData } from '@/lib/types/mainPage';
 
 interface IndexProps {
   data: MainPageData;
@@ -51,7 +50,7 @@ export default function Index({ data }: IndexProps) {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Signy</title>
         </Head>
         <Hero slides={heroSlider.heroSlide} />
         <Features allFeatures={allFeatures} />
