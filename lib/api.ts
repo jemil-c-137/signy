@@ -1,4 +1,5 @@
-import { MainPageData } from './types';
+import { BlogPageData } from './types/blogPage';
+import { MainPageData } from './types/mainPage';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -128,6 +129,50 @@ export async function getMainPageData() {
           text
           id
           title
+        }
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getBlogPageData() {
+  const data = fetchAPI<BlogPageData>(
+    `
+    query MyQuery {
+      blogPage {
+        heading
+        pageDetails {
+          title
+          slug
+        }
+        posts {
+          tags {
+            tagName
+            id
+          }
+          slug
+          id
+          title
+          excerpt
+          createdAt
+          coverImage {
+            url
+          }
+        }
+        featuredPost {
+          slug
+          tags {
+            id
+            tagName
+          }
+          excerpt
+          createdAt
+          title
+          coverImage {
+            url
+          }
         }
       }
     }

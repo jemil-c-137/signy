@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-dark-blue-90;
+  @apply text-dark-blue-90 font-plex-sans;
 }
 
 .headline-1 {
@@ -16,6 +16,10 @@ body {
 
 .paragraph {
   @apply text-sm font-normal font-plex-sans md:text-base;
+}
+
+.tag {
+  @apply text-[10px] leading-6 px-4 rounded-3xl bg-light-gray uppercase font-medium;
 }
 
 .section {

@@ -1,4 +1,4 @@
-import { Feature } from '@/lib/types';
+import { Feature } from '@/lib/types/mainPage';
 import Image from 'next/image';
 
 interface IFeaturesProps {
