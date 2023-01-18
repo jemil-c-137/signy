@@ -1,4 +1,5 @@
-import { BlogPageData } from './types/blogPage';
+import { PER_PAGE } from 'pages/blog';
+import { BlogPageData, GetPostsResponse } from './types/blogPage';
 import { MainPageData } from './types/mainPage';
 
 const API_URL = 'https://graphql.datocms.com';
@@ -147,20 +148,6 @@ export async function getBlogPageData() {
           title
           slug
         }
-        posts {
-          tags {
-            tagName
-            id
-          }
-          slug
-          id
-          title
-          excerpt
-          createdAt
-          coverImage {
-            url
-          }
-        }
         featuredPost {
           slug
           tags {
@@ -174,9 +161,63 @@ export async function getBlogPageData() {
             url
           }
         }
+        
+      }
+      allPosts {
+        id
       }
     }
     `,
   );
+  return data;
+}
+
+export async function getFirstPagePosts(limit: number = PER_PAGE) {
+  const data = await fetchAPI<GetPostsResponse>(
+    `
+    query MyQuery {
+      allPosts {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }
+    `,
+  );
+
+  return data;
+}
+
+export async function getPagePosts(skip: number) {
+  const data = await fetchAPI<GetPostsResponse>(
+    `
+    query MyQuery {
+      allPosts(skip: ${skip}, first: ${PER_PAGE}) {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }
+    `,
+  );
+
   return data;
 }
