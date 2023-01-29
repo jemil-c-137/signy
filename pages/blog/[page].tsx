@@ -74,7 +74,7 @@ export async function getStaticPaths() {
     // Other pages will be prerendered at runtime.
     paths: Array.from({ length: 5 }).map((_, i) => `/blog/${i + 2}`),
     // Block the request for non-generated pages and cache them in the background
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 

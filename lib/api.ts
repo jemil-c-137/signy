@@ -1,6 +1,7 @@
 import { PER_PAGE } from 'pages/blog';
 import { BlogPageData, GetPostsResponse } from './types/blogPage';
 import { MainPageData } from './types/mainPage';
+import { PostPageResponse } from './types/postPage';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -221,3 +222,48 @@ export async function getPagePosts(skip: number) {
 
   return data;
 }
+
+export async function getAllPostsSlugs() {
+  const data = await fetchAPI<{ allPosts: { id: string; slug: string }[] }>(
+    `query MyQuery {
+      allPosts {
+        slug
+        id
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getPostData(slug: string) {
+  const data = await fetchAPI<PostPageResponse>(
+    `query MyQuery {
+      post(filter: {slug: {eq: "${slug}"}}) {
+        id
+        title
+        tags {
+          tagName
+          id
+        }
+        updatedAt
+        content(markdown: true)
+      }
+      social {
+        title
+        medias {
+          id
+          link
+          logo {
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+    `,
+  );
+  return data;
+}
+
