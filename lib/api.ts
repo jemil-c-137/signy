@@ -82,6 +82,12 @@ export async function getMainPageData() {
         coverImage {
           url
         }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
       }
       cardsGrid {
         title
@@ -194,6 +200,28 @@ export async function getFirstPagePosts(limit: number = PER_PAGE) {
     }
     `,
   );
+  return data;
+}
+
+export async function getFeaturedPosts() {
+  const data = await fetchAPI(
+    `query MyQuery {
+      allPosts(filter: {featured: {eq: true}}) {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }`,
+  );
 
   return data;
 }
@@ -266,4 +294,3 @@ export async function getPostData(slug: string) {
   );
   return data;
 }
-

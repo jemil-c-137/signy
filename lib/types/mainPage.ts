@@ -1,3 +1,5 @@
+import { Post } from "./blogPage";
+
 export interface HeroSliderResponse {
   heroSlide: { id: string; text: string; title: string }[];
 }
@@ -82,6 +84,6 @@ export interface MainPageData {
   standOut: StandOut;
   partnersModel: Partners;
   cardsGrid: CardsGrid;
-  allPosts: AllPost[];
+  allPosts: Post[];
   faq: FAQ;
 }
