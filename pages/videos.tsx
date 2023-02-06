@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { getFeaturedPosts, getFirstPagePosts } from '@/lib/api';
 import { Post } from '@/lib/types/blogPage';
 import PostsGrid from '@/components/postsGrid';
+import SubscribeForm from '@/components/subscribeForm';
 
 function Videos(props) {
   console.log(props, 'props');
@@ -83,6 +84,9 @@ function Videos(props) {
         </div>
         <PostsGrid title="Interestingly writing about" posts={posts} />
       </main>
+      <div className="section-cyan pt-24 pb-24">
+        <SubscribeForm />
+      </div>
     </Layout>
   );
 }
