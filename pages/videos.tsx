@@ -14,7 +14,7 @@ function Videos(props) {
 
   return (
     <Layout>
-      <main className="section p-24">
+      <main className="section pt-24 pb-24">
         <h1 className="headline-1 mb-4">Video instructions</h1>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-x-10">
           <div className="mb-4 col-span-1 md:col-span-2">
