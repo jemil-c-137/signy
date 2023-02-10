@@ -1,9 +1,11 @@
 import Button from '@/components/button';
 import Layout from '@/components/layout';
 import { useState } from 'react';
+import map from '../assets/img/map.png';
+import Image from 'next/image';
 
 const EMAIL_REGEX = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, 'gm');
-const PHONE_REGEX = new RegExp(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/);
+const PHONE_REGEX = new RegExp(/^[0-9]*$/);
 
 export default function Contacts() {
   const [name, setName] = useState('');
@@ -34,7 +36,7 @@ export default function Contacts() {
 
   const onPhoneChange = (value: string) => {
     setPhone(value);
-    if (value !== '' && PHONE_REGEX.test(value)) {
+    if (value !== '' && PHONE_REGEX.test(value) && value.length > 5) {
       setIsPhoneValid(true);
     } else {
       setIsPhoneValid(false);
@@ -63,22 +65,22 @@ export default function Contacts() {
     if (isFormTouched) {
       return isValid ? 'border-green' : 'border-red-600';
     } else {
-      return '';
+      return 'border-success';
     }
   };
 
   return (
     <Layout>
       <main className="section pt-24 pb-24">
-        <div className="flex flex-col">
-          <div>
-            <h1 className="headline-1">Our contacts</h1>
-            <p className="paragraph">
+        <h1 className="headline-1 mb-4 md:mb-8">Our contacts</h1>
+        <div className="flex flex-col lg:flex-row mb-8">
+          <div className="w-full lg:w-1/2 mr-32 mb-12">
+            <p className="paragraph mb-4">
               We are always happy to answer your questions and develop effective cooperation on all issues related to
               electronic document management.
             </p>
             <div>
-              <div className="flex">
+              <div className="flex mb-4">
                 <span className="mr-6">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -94,7 +96,7 @@ export default function Contacts() {
                   <div>+9 876 5432101</div>
                 </div>
               </div>
-              <div>
+              <div className="mb-4">
                 <span className="mr-6">
                   <svg
                     className="inline"
@@ -111,7 +113,7 @@ export default function Contacts() {
                 </span>
                 <span>infobiz@biz.com</span>
               </div>
-              <div>
+              <div className="mb-4">
                 <span className="mr-6">
                   <svg
                     className="inline"
@@ -130,11 +132,13 @@ export default function Contacts() {
               </div>
             </div>
           </div>
-          <div>map</div>
+          <div>
+            <Image width={'600'} height={100} src={map} alt="" />
+          </div>
         </div>
         <div>
           <h2 className="headline-1 mb-8">...or write us:</h2>
-          <form onBlur={validateForm}>
+          <form className="max-w-md" onBlur={validateForm}>
             <div className="flex flex-col relative">
               <label className="ml-3 mb-4" htmlFor="name">
                 Name
@@ -142,9 +146,9 @@ export default function Contacts() {
               <input
                 id="name"
                 name="name"
-                className={`w-full border border-success ${getValidationClasses(
+                className={`w-full border rounded-xl outline-success focus:border-2 p-2 mb-6 md:mb-0 ${getValidationClasses(
                   isNameValid,
-                )} rounded-xl outline-success focus:border-2 p-2 mb-6 md:mb-0`}
+                )} `}
                 type="text"
                 value={name}
                 onChange={(e) => onNameChange(e.target.value)}
@@ -160,43 +164,59 @@ export default function Contacts() {
               )}
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <label className="ml-3 mb-4" htmlFor="email">
                 Email
               </label>
               <input
                 id="email"
                 name="email"
-                className={`w-full border border-success ${getValidationClasses(
+                className={`w-full border ${getValidationClasses(
                   isEmailValid,
                 )} rounded-xl outline-success focus:border-2 p-2 mb-6 md:mb-0`}
                 type="email"
                 onChange={(e) => onEmailChange(e.target.value)}
                 onBlur={validateForm}
               />
+              {isFormTouched && (
+                <span
+                  className={`absolute right-6 w-4 h-4 ${
+                    isEmailValid ? 'bg-green' : 'bg-red-600'
+                  } flex justify-center items-center text-white rounded-full font-bold top-[50%]`}>
+                  {isEmailValid ? '✓' : '!'}
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <label className="ml-3 mb-4" htmlFor="phone">
                 Phone
               </label>
               <input
                 id="phone"
                 name="phone"
-                className={`w-full border border-success ${getValidationClasses(
+                className={`w-full border ${getValidationClasses(
                   isPhoneValid,
                 )} rounded-xl outline-success focus:border-2 p-2 mb-6 md:mb-0`}
                 type="tel"
                 onChange={(e) => onPhoneChange(e.target.value)}
                 onBlur={validateForm}
               />
+              {isFormTouched && (
+                <span
+                  className={`absolute right-6 w-4 h-4 ${
+                    isPhoneValid ? 'bg-green' : 'bg-red-600'
+                  } flex justify-center items-center text-white rounded-full font-bold top-[50%]`}>
+                  {isPhoneValid ? '✓' : '!'}
+                </span>
+              )}
             </div>
             <div className="flex flex-col">
               <label className="ml-3 mb-4" htmlFor="message">
                 Message
               </label>
               <textarea
-                className="w-full border border-black rounded-xl  focus:outline-grey p-2 mb-6 md:mb-0"
+                className="w-full border border-black rounded-xl focus:outline-grey p-2 mb-6"
                 name="message"
                 id="message"
                 cols={20}
