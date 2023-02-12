@@ -1,5 +1,8 @@
 import { PER_PAGE } from 'pages/blog';
+import { AboutUsPage } from './types/aboutUsPage';
 import { BlogPageData, GetPostsResponse } from './types/blogPage';
+import { ContactsPageData } from './types/contactsPage';
+import { FaqPageData } from './types/faqPage';
 import { MainPageData } from './types/mainPage';
 import { PostPageResponse } from './types/postPage';
 
@@ -292,5 +295,74 @@ export async function getPostData(slug: string) {
     }
     `,
   );
+  return data;
+}
+
+export async function getContactsPageData() {
+  const data = await fetchAPI<ContactsPageData>(`
+  query MyQuery {
+    contactsPage {
+      title
+      subtext
+      contactOptions {
+        text(markdown: true)
+        logo {
+          url
+          width
+          height
+        }
+        id
+      }
+    }
+  }
+  `);
+
+  return data;
+}
+
+export async function getFaqPageData() {
+  const data = await fetchAPI<FaqPageData>(`
+  query MyQuery {
+    faqPage {
+      questionTypes {
+        id
+        name
+        questions {
+          id
+          question
+          answer(markdown: true)
+        }
+      }
+    }
+  }
+  `);
+
+  return data;
+}
+
+export async function getAboutUsPageData() {
+  const data = await fetchAPI<AboutUsPage>(
+    `query MyQuery {
+      aboutUsPage {
+        title
+        content(markdown: true)
+        leadingImage {
+          url
+          width
+          height
+        }
+      }
+      partnersModel {
+        title
+        partnerLogo {
+          url
+          id
+        }
+      }
+    }
+    
+    `,
+  );
+
   return data;
 }
