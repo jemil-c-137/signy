@@ -12,7 +12,6 @@ export default function Header() {
   const router = useRouter();
 
   const toggleNav = () => {
-    console.log('click');
     setShowMobileNav((state) => !state);
   };
 
