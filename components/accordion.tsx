@@ -11,11 +11,6 @@ const Accordion: React.FC<IAccordionProps> = ({ list }) => {
   const [active, setActive] = useState<number>(-1);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>, idx: number) => {
-    event.stopPropagation();
-
-    const element = event.target as HTMLElement;
-
-    console.log(element, 'item');
 
     if (idx === active) {
       setActive(-1);
