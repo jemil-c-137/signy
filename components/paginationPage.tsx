@@ -1,6 +1,7 @@
 import Pagination from './pagination';
 import { BlogPage, Post } from '../lib/types/blogPage';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type PageProps = {
   blogPage: BlogPage;
@@ -34,10 +35,10 @@ const PaginationPage = ({ currentPage, totalProducts, perPage, blogPage, posts }
         <div className="mb-6">
           <hr />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {posts.map((post) => (
-            <div key={post.id}>
-              <Image className="rounded" width={370} height={370} src={post.coverImage.url} alt="" />
+            <Link key={post.id} href={`/posts/${post.slug}`}>
+              <Image className="rounded" width={700} height={370} src={post.coverImage.url} alt="" />
               <p className="text-xs">{new Date(post.createdAt).toDateString()}</p>
               <h3 className="headline-2 mb-4">{post.title}</h3>
               <div className="flex gap-x-4 mb-2">
@@ -49,7 +50,7 @@ const PaginationPage = ({ currentPage, totalProducts, perPage, blogPage, posts }
               </div>
               <div className="mb-4 text-lg">{post.excerpt}</div>
               <p className="font-medium uppercase cursor-pointer">read more</p>
-            </div>
+            </Link>
           ))}
         </div>
         <Pagination

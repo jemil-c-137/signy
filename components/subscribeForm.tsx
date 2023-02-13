@@ -33,7 +33,11 @@ const SubscribeForm = () => {
             className="w-full border border-success rounded-xl focus:outline-cyan p-2 mb-6 md:mb-0"
             type="email"
           />
-          <Button small disabled={email.length === 0} classes={email.length === 0 ? 'opacity-60' : ''} type="submit">
+          <Button
+            small
+            disabled={email.length === 0}
+            classes={`${email.length === 0 ? 'opacity-60' : ''} cursor-pointer`}
+            type="submit">
             Subscribe
           </Button>
         </form>
