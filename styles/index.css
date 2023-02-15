@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-dark-blue-90;
+  @apply text-dark-blue-90 font-plex-sans;
 }
 
 .headline-1 {
@@ -18,8 +18,16 @@ body {
   @apply text-sm font-normal font-plex-sans md:text-base;
 }
 
+.tag {
+  @apply text-[10px] leading-6 px-4 rounded-3xl bg-light-gray uppercase font-medium;
+}
+
 .section {
   @apply px-5 md:px-12 lg:px-28;
+}
+
+.header {
+  @apply px-5 md:px-12 lg:px-14;
 }
 
 .section-white {
@@ -31,15 +39,15 @@ body {
 }
 
 .btn-base {
-  @apply py-4 px-8 font-bold text-xs rounded-[45px] uppercase block my-0 mx-auto md:text-base;
+  @apply py-4 px-8 font-bold text-xs rounded-[45px] uppercase block md:text-base;
 }
 
 .btn-primary {
-  @apply btn-base bg-success text-white;
+  @apply btn-base bg-success text-white hover:bg-transparent hover:text-success hover:border-success border-2 transition-colors;
 }
 
 .btn-secondary {
-  @apply btn-base bg-transparent text-dark border-success border-2;
+  @apply btn-base bg-transparent text-dark border-success border-2 hover:text-white hover:bg-success transition-colors;
 }
 
 .btn-small {
@@ -52,5 +60,26 @@ body {
 
 .footer {
   display: grid;
-  grid: "a" "b" / "c" "d"
+  grid: 'a' 'b' / 'c' 'd';
+}
+
+.accordion-content {
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 1s ease-in-out;
+}
+
+.accordion-content[aria-expanded='true'] {
+  max-height: 0px;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.plus path {
+  transition: all 800ms;
+  transform: rotate(0);
+  transform-origin: 50% 50%;
+}
+
+.plus.minus .plus_svg__vertical-line {
+  transform: rotate(450deg);
 }

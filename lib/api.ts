@@ -1,4 +1,10 @@
-import { MainPageData } from './types';
+import { PER_PAGE } from 'pages/blog';
+import { AboutUsPage } from './types/aboutUsPage';
+import { BlogPageData, GetPostsResponse } from './types/blogPage';
+import { ContactsPageData } from './types/contactsPage';
+import { FaqPageData } from './types/faqPage';
+import { MainPageData } from './types/mainPage';
+import { PostPageResponse } from './types/postPage';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
@@ -79,6 +85,12 @@ export async function getMainPageData() {
         coverImage {
           url
         }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
       }
       cardsGrid {
         title
@@ -133,5 +145,224 @@ export async function getMainPageData() {
     }
     `,
   );
+  return data;
+}
+
+export async function getBlogPageData() {
+  const data = fetchAPI<BlogPageData>(
+    `
+    query MyQuery {
+      blogPage {
+        heading
+        pageDetails {
+          title
+          slug
+        }
+        featuredPost {
+          slug
+          tags {
+            id
+            tagName
+          }
+          excerpt
+          createdAt
+          title
+          coverImage {
+            url
+          }
+        }
+        
+      }
+      allPosts {
+        id
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getFirstPagePosts(limit: number = PER_PAGE) {
+  const data = await fetchAPI<GetPostsResponse>(
+    `
+    query MyQuery {
+      allPosts {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getFeaturedPosts() {
+  const data = await fetchAPI(
+    `query MyQuery {
+      allPosts(filter: {featured: {eq: true}}) {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }`,
+  );
+
+  return data;
+}
+
+export async function getPagePosts(skip: number) {
+  const data = await fetchAPI<GetPostsResponse>(
+    `
+    query MyQuery {
+      allPosts(skip: ${skip}, first: ${PER_PAGE}) {
+        title
+        id
+        createdAt
+        coverImage {
+          url
+        }
+        tags {
+          tagName
+          id
+        }
+        excerpt
+        slug
+      }
+    }
+    `,
+  );
+
+  return data;
+}
+
+export async function getAllPostsSlugs() {
+  const data = await fetchAPI<{ allPosts: { id: string; slug: string }[] }>(
+    `query MyQuery {
+      allPosts {
+        slug
+        id
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getPostData(slug: string) {
+  const data = await fetchAPI<PostPageResponse>(
+    `query MyQuery {
+      post(filter: {slug: {eq: "${slug}"}}) {
+        id
+        title
+        tags {
+          tagName
+          id
+        }
+        updatedAt
+        content(markdown: true)
+      }
+      social {
+        title
+        medias {
+          id
+          link
+          logo {
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+    `,
+  );
+  return data;
+}
+
+export async function getContactsPageData() {
+  const data = await fetchAPI<ContactsPageData>(`
+  query MyQuery {
+    contactsPage {
+      title
+      subtext
+      contactOptions {
+        text(markdown: true)
+        logo {
+          url
+          width
+          height
+        }
+        id
+      }
+    }
+  }
+  `);
+
+  return data;
+}
+
+export async function getFaqPageData() {
+  const data = await fetchAPI<FaqPageData>(`
+  query MyQuery {
+    faqPage {
+      questionTypes {
+        id
+        name
+        questions {
+          id
+          question
+          answer(markdown: true)
+        }
+      }
+    }
+  }
+  `);
+
+  return data;
+}
+
+export async function getAboutUsPageData() {
+  const data = await fetchAPI<AboutUsPage>(
+    `query MyQuery {
+      aboutUsPage {
+        title
+        content(markdown: true)
+        leadingImage {
+          url
+          width
+          height
+        }
+      }
+      partnersModel {
+        title
+        partnerLogo {
+          url
+          id
+        }
+      }
+    }
+    
+    `,
+  );
+
   return data;
 }

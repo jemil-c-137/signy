@@ -1,7 +1,6 @@
 import Layout from '@/components/layout';
 import { getMainPageData } from '@/lib/api';
 import Head from 'next/head';
-import { CMS_NAME } from '@/lib/constants';
 import Hero from '@/components/hero';
 import Features from '@/components/features';
 import BulletList from '@/components/bulletList';
@@ -11,7 +10,8 @@ import CardsGrid from '@/components/cardsGrid';
 import bigComputer from '../assets/img/big-computer.png';
 import Accordion from '@/components/accordion';
 import SubscribeForm from '@/components/subscribeForm';
-import { MainPageData } from '@/lib/types';
+import { MainPageData } from '@/lib/types/mainPage';
+import PostsGrid from '@/components/postsGrid';
 
 interface IndexProps {
   data: MainPageData;
@@ -51,7 +51,7 @@ export default function Index({ data }: IndexProps) {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Signy</title>
         </Head>
         <Hero slides={heroSlider.heroSlide} />
         <Features allFeatures={allFeatures} />
@@ -93,18 +93,7 @@ export default function Index({ data }: IndexProps) {
             ))}
           </div>
         </section>
-        <section className="section-cyan py-5 md:py-8 lg:py-10">
-          <h3 className="headline-1 text-center mb-6">Interestingly writing about</h3>
-          <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-11 items-center justify-center">
-            {allPosts.map((post) => (
-              <div key={post.id}>
-                <Image width={374} height={395} src={post.coverImage.url} alt="computer image" className="mb-3" />
-                <p className="text-xs mb-1.5 md:text-sm">{post.createdAt}</p>
-                <p className="text-base md:text-lg lg:text-xl font-semibold">{post.title}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <PostsGrid title="Interestingly writing about" posts={allPosts} sectionClasses="section-cyan" />
         <section className="section-white py-5 flex flex-col justify-center items-center">
           <h3 className="headline-1 mb-6">Let's meet live?</h3>
           <Image width={734} height={451} src={bigComputer} alt="computer image"></Image>

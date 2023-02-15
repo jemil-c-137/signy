@@ -7,6 +7,7 @@ module.exports = {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
+        'light-gray': '#E5E5E5',
         dark: '#061224',
         success: '#1064E5',
         'light-blue': '#E2EDFB',
@@ -22,8 +23,9 @@ module.exports = {
         'dark-blue-90': 'rgba(6, 18, 36, 0.9)',
         'dark-blue-100': '#061224',
         cyan: '#79FFE1',
+        green: '#01B754',
         'light-cyan': '#D8F1F0',
-        'light-cyan-100': '#DEEEFC'
+        'light-cyan-100': '#DEEEFC',
       },
       spacing: {
         28: '7rem',

@@ -24,14 +24,20 @@ const SubscribeForm = () => {
           : 'Enter your email address and stay up to date with all updates'}
       </p>
       {!submitted && (
-        <form onSubmit={buttonSubmit} className="grid md:grid-cols-2 items-center justify-center max-w-[600px] mx-auto">
+        <form
+          onSubmit={buttonSubmit}
+          className="grid md:grid-cols-2 items-center justify-center max-w-[600px] mx-auto gap-x-12">
           <input
             value={email}
             onChange={handleChange}
-            className="w-full border border-success rounded-xl  focus:outline-cyan p-2 mb-6 md:mb-0"
+            className="w-full border border-success rounded-xl focus:outline-cyan p-2 mb-6 md:mb-0"
             type="email"
           />
-          <Button small disabled={email.length === 0} classes={email.length === 0 ? 'opacity-60' : ''} type="submit">
+          <Button
+            small
+            disabled={email.length === 0}
+            classes={`${email.length === 0 ? 'opacity-60' : ''} cursor-pointer`}
+            type="submit">
             Subscribe
           </Button>
         </form>
