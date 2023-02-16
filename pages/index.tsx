@@ -1,6 +1,5 @@
 import Layout from '@/components/layout';
 import { getMainPageData } from '@/lib/api';
-import Head from 'next/head';
 import Hero from '@/components/hero';
 import Features from '@/components/features';
 import BulletList from '@/components/bulletList';
@@ -49,10 +48,7 @@ export default function Index({ data }: IndexProps) {
 
   return (
     <>
-      <Layout>
-        <Head>
-          <title>Signy</title>
-        </Head>
+      <Layout title="Signy" canonicalLink="https://signy.vercel.app/">
         <Hero slides={heroSlider.heroSlide} />
         <Features allFeatures={allFeatures} />
         <section className="section-cyan py-5 md:py-12 lg:py-14 items-center gap-y-14 flex flex-col">

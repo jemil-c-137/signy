@@ -22,7 +22,7 @@ const Blog: React.FC<BlogPageProps> = ({ blogPage, posts }) => {
 
   return (
     <>
-      <Layout>
+      <Layout title='Signy - Posts' >
         <Head>
           <title>{blogPage.pageDetails.title}</title>
         </Head>

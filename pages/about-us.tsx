@@ -11,7 +11,7 @@ const AboutUs = ({ aboutUsPage, partnersModel }: AboutUsPage) => {
   console.log(partnersModel, 'partners');
 
   return (
-    <Layout>
+    <Layout title="Signy - About Us" canonicalLink="https://signy.vercel.app/about-us">
       <section className="section pt-24 pb-8">
         <h1 className="headline-1 mb-8">{title}</h1>
         <div className="mb-8 flex justify-center">

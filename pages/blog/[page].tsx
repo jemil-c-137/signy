@@ -16,7 +16,7 @@ const Page = ({ blogPage, posts, allPosts }: BlogPageProps) => {
   const firstPagePosts = posts;
   return (
     <>
-      <Layout>
+      <Layout title="Signy - Posts">
         <Head>
           <title>{blogPage.pageDetails.title}</title>
         </Head>
@@ -35,7 +35,7 @@ const Page = ({ blogPage, posts, allPosts }: BlogPageProps) => {
   );
 };
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const page = Number(params?.page) || 1;
   const data = await getBlogPageData();
   const { allPosts } = await getPagePosts(Math.ceil(PER_PAGE * page));
@@ -53,7 +53,7 @@ export async function getStaticProps({params}) {
         destination: '/blog',
         permanent: false,
       },
-    }
+    };
   }
 
   return {

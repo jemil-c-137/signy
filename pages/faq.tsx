@@ -114,7 +114,7 @@ export default function Faq({ faqPage }: FaqPageData) {
   };
 
   return (
-    <Layout>
+    <Layout title="Signy - FAQ" canonicalLink="https://signy.vercel.app/faq">
       <section className="section py-24">
         <div className="max-w-xl">
           <h1 className="headline-1 mb-8">Popular questions and answers</h1>

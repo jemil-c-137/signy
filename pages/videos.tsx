@@ -13,7 +13,7 @@ function Videos(props) {
   const posts: Post[] = props.data.allPosts;
 
   return (
-    <Layout>
+    <Layout title="Signy - Videos" canonicalLink="https://signy.vercel.app/videos">
       <main className="section pt-24 pb-24">
         <h1 className="headline-1 mb-4">Video instructions</h1>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-x-10">
