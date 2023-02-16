@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants';
 
-export default function Meta() {
+export default function Meta({ canonicalLink }) {
   return (
     <Head>
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
@@ -13,8 +13,11 @@ export default function Meta() {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
+      <meta name="robots" content="all" />
+      <meta name="googlebot" content="all" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta name="description" content={`A statically generated blog example using Next.js and ${CMS_NAME}.`} />
+      {canonicalLink && <link rel="canonical" href={`${canonicalLink}`} key="canonical" />}
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -83,10 +83,10 @@ export default function Header() {
             <Link href="/about-us">About us</Link>
           </li>
           <li className="hover:text-success transition-colors">
-            <Link href="contacts">Contacts</Link>
+            <Link href="/contacts">Contacts</Link>
           </li>
           <li className="hover:text-success transition-colors">
-            <Link href="contacts">Questions</Link>
+            <Link href="/faq">Questions</Link>
           </li>
           <Button small style="secondary">
             Login

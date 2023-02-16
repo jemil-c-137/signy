@@ -9,7 +9,7 @@ export default function Contacts({ contactsPage }: ContactsPageData) {
   const { title, subtext, contactOptions } = contactsPage;
 
   return (
-    <Layout>
+    <Layout title="Singy - Contacts" canonicalLink="https://signy.vercel.app/contacts">
       <main className="section pt-24 pb-24">
         <h1 className="headline-1 mb-4 md:mb-8">{title}</h1>
         <div className="flex flex-col lg:flex-row mb-8">

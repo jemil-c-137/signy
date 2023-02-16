@@ -9,11 +9,13 @@ const Post = ({ post, social }: PostPageResponse) => {
   console.log(social, 'props');
 
   return (
-    <Layout>
+    <Layout title={`Signy - ${post.title}`} canonicalLink={`https://signy.vercel.app/post/${post.title}`}>
       <main className="section p-24">
         <h1 className="headline-1 mb-2">{post.title}</h1>
         <p className="mb-2 text-xs">{new Date(post.updatedAt).toLocaleDateString('ru')}</p>
-        <div className="mb-8 flex flex-col gap-y-8 max-w-3xl mx-0 my-auto" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+        <div
+          className="mb-8 flex flex-col gap-y-8 max-w-3xl mx-0 my-auto"
+          dangerouslySetInnerHTML={{ __html: post.content }}></div>
         <h3 className="headline-1 text-center mb-4">{social.title}</h3>
         <div className="flex items-center justify-evenly mb-8">
           {social.medias.map((media) => {
