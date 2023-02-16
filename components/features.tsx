@@ -12,6 +12,7 @@ export default function Features({ allFeatures }: IFeaturesProps) {
         {allFeatures.map((feature) => (
           <div key={feature.id} className="flex items-center gap-x-8 md:gap-x-4">
             <Image
+              loading="eager"
               className="w-full max-w-[42px]"
               src={feature.logo.url}
               height={feature.logo.height}

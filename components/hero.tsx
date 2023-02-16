@@ -49,7 +49,7 @@ const Hero: React.FC<IHeroProps> = ({ slides }) => {
         <button className="btn-primary lg:ml-0 lg:mr-auto">Try for free</button>
       </div>
       <div>
-        <Image width={width} height={100} src={image} alt="" />
+        <Image loading="eager" width={width} height={100} src={image} alt="" />
       </div>
     </div>
   );
